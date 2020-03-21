@@ -1,13 +1,23 @@
 .dashboard {
   padding: 40px 0;
+  width: 90%;
+  margin: 0 5% 0 5%;
 }
 
 
 .dashboard .country-name {
   text-transform: capitalize;
   text-align: center;
+  color: #7d7d7d;
 }
 
 .dashboard .flag{
   width: 100px;
+}
+
+.dashboard  .plot-title {
+  text-align: center;
+  margin: 70px 0 10px 0;
+  font-size: 25px;
+  color: #67abf3;
 }

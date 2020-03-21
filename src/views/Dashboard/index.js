@@ -155,16 +155,16 @@ class Dashboard extends React.Component {
           <h1>{country.name}</h1>
         </div>
 
-        <div>COVID-19 cases and deaths over time (linear scale)</div>
+        <div className="plot-title">COVID-19 cases and deaths over time (linear scale)</div>
         <Line data={dataRegularSeries} options={{}} height={100}/>
 
-        <div>COVID-19 cumulated cases and deaths over time (logarithmic scale)</div>
+        <div className="plot-title">COVID-19 cumulated cases and deaths over time (logarithmic scale)</div>
         <Line data={dataCumulatedSeries} options={logScale} height={100}/>
 
-        <div>COVID-19 cases and deaths over time per million population (linear scale)</div>
+        <div className="plot-title">COVID-19 cases and deaths over time per million population (linear scale)</div>
         <Line data={dataSeriesPerMillion} options={{}} height={100}/>
 
-        <div>COVID-19 cumulated cases and deaths over time per milion poplation (logarithmic scale)</div>
+        <div className="plot-title">COVID-19 cumulated cases and deaths over time per milion poplation (logarithmic scale)</div>
         <Line data={dataCumulatedSeriesPerMillion} options={logScale} height={100}/>
 
 
