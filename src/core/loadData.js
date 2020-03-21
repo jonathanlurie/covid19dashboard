@@ -16,7 +16,13 @@ async function loadData(){
   })
 
   // load covid-19 cases
-  let covid19Res = await fetch('./data/covid19-per-country.json')
+  let date = new Date()
+  let day = date.getUTCDate()
+  day = day < 10 ? `0${day}` : `${day}`
+  let month = date.getUTCMonth() + 1
+  month = month < 10 ? `0${month}` : `${month}`
+  let year = `${date.getUTCFullYear()}`
+  let covid19Res = await fetch(`./data/covid19-per-country-${day}-${month}-${year}.json`)
   let covid19 = await covid19Res.json()
 
   for(let c=0; c<countryByAbreviation.length; c++){

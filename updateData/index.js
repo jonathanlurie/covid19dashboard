@@ -5,11 +5,11 @@ const fs = require('fs')
 async function main(){
   // https://www.ecdc.europa.eu/sites/default/files/documents/COVID-19-geographic-disbtribution-worldwide-2020-03-18.xls
   let date = new Date()
-  let day = date.getDate()
+  let day = date.getUTCDate()
   day = day < 10 ? `0${day}` : `${day}`
-  let month = date.getMonth() + 1
+  let month = date.getUTCMonth() + 1
   month = month < 10 ? `0${month}` : `${month}`
-  let year = `${date.getFullYear()}`
+  let year = `${date.getUTCFullYear()}`
 
   let reportUrl = `https://www.ecdc.europa.eu/sites/default/files/documents/COVID-19-geographic-disbtribution-worldwide-${year}-${month}-${day}.xlsx`
   // sometimes, the file is saved as xls, sometimes as xlsx
@@ -71,7 +71,7 @@ async function main(){
   }
 
   // fs.writeFileSync('data/covid19-per-country.json', JSON.stringify(countries , null, 2))
-  fs.writeFileSync('../public/data/covid19-per-country.json', JSON.stringify(countries , null, 2))
+  fs.writeFileSync(`../public/data/covid19-per-country-${day}-${month}-${year}.json`, JSON.stringify(countries , null, 2))
 
   console.log('✅  JSON report ready!')
 }

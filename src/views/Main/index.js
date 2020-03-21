@@ -1,6 +1,6 @@
 import React from "react"
-import { countryCollection } from '../core/Store'
-import Dashboard from './Dashboard'
+import { countryCollection } from '../../core/Store'
+import Dashboard from '../Dashboard'
 
 class Main extends React.Component {
   constructor(props){

@@ -108,6 +108,63 @@ class Country {
       return series
     }
 
+    getCasesSeriesPerMillion(){
+      // key is date such as yyyy-mm-dd
+      let series = {}
+
+      for(let i=0; i<this.recordSeries.length; i++){
+        let r = this.recordSeries[i]
+        let year = r.date.getUTCFullYear()
+        let month = r.date.getUTCMonth() + 1
+        month = month < 10 ? `0${month}` : month
+        let day = r.date.getUTCDate()
+        day = day < 10 ? `0${day}` : day
+        let key = `${year}-${month}-${day}`
+        series[key] = r.cases / (this.population / MILLION)
+      }
+      return series
+    }
+
+
+    getCumulatedCasesSeries(){
+      // key is date such as yyyy-mm-dd
+      let series = {}
+      let total = 0
+
+      for(let i=0; i<this.recordSeries.length; i++){
+        let r = this.recordSeries[i]
+        total += r.cases
+        let year = r.date.getUTCFullYear()
+        let month = r.date.getUTCMonth() + 1
+        month = month < 10 ? `0${month}` : month
+        let day = r.date.getUTCDate()
+        day = day < 10 ? `0${day}` : day
+        let key = `${year}-${month}-${day}`
+        series[key] = total
+      }
+      return series
+    }
+
+
+    getCumulatedCasesSeriesPerMillion(){
+      // key is date such as yyyy-mm-dd
+      let series = {}
+      let total = 0
+
+      for(let i=0; i<this.recordSeries.length; i++){
+        let r = this.recordSeries[i]
+        total += r.cases
+        let year = r.date.getUTCFullYear()
+        let month = r.date.getUTCMonth() + 1
+        month = month < 10 ? `0${month}` : month
+        let day = r.date.getUTCDate()
+        day = day < 10 ? `0${day}` : day
+        let key = `${year}-${month}-${day}`
+        series[key] = total / (this.population / MILLION)
+      }
+      return series
+    }
+
 
     getDeathsSeries(){
       // key is date such as yyyy-mm-dd
@@ -122,6 +179,61 @@ class Country {
         day = day < 10 ? `0${day}` : day
         let key = `${year}-${month}-${day}`
         series[key] = r.deaths
+      }
+      return series
+    }
+
+    getDeathsSeriesPerMillion(){
+      // key is date such as yyyy-mm-dd
+      let series = {}
+
+      for(let i=0; i<this.recordSeries.length; i++){
+        let r = this.recordSeries[i]
+        let year = r.date.getUTCFullYear()
+        let month = r.date.getUTCMonth() + 1
+        month = month < 10 ? `0${month}` : month
+        let day = r.date.getUTCDate()
+        day = day < 10 ? `0${day}` : day
+        let key = `${year}-${month}-${day}`
+        series[key] = r.deaths / (this.population / MILLION)
+      }
+      return series
+    }
+
+    getCumulatedDeathsSeries(){
+      // key is date such as yyyy-mm-dd
+      let series = {}
+      let total = 0
+
+      for(let i=0; i<this.recordSeries.length; i++){
+        let r = this.recordSeries[i]
+        total += r.deaths
+        let year = r.date.getUTCFullYear()
+        let month = r.date.getUTCMonth() + 1
+        month = month < 10 ? `0${month}` : month
+        let day = r.date.getUTCDate()
+        day = day < 10 ? `0${day}` : day
+        let key = `${year}-${month}-${day}`
+        series[key] = total
+      }
+      return series
+    }
+
+    getCumulatedDeathsSeriesPerMillion(){
+      // key is date such as yyyy-mm-dd
+      let series = {}
+      let total = 0
+
+      for(let i=0; i<this.recordSeries.length; i++){
+        let r = this.recordSeries[i]
+        total += r.deaths
+        let year = r.date.getUTCFullYear()
+        let month = r.date.getUTCMonth() + 1
+        month = month < 10 ? `0${month}` : month
+        let day = r.date.getUTCDate()
+        day = day < 10 ? `0${day}` : day
+        let key = `${year}-${month}-${day}`
+        series[key] = total / (this.population / MILLION)
       }
       return series
     }

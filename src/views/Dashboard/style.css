@@ -1,0 +1,13 @@
+.dashboard {
+  padding: 40px 0;
+}
+
+
+.dashboard .country-name {
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.dashboard .flag{
+  width: 100px;
+}
