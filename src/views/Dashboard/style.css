@@ -1,8 +1,8 @@
 .dashboard {
   position: absolute;
   padding: 40px 0;
-  width: calc(100% - 300px);
-  /* margin: 0 5% 0 5%; */
+  width: calc(100% - 320px);
+  margin: 0 10px 0 10px;
   right: 0;
   overflow-y: scroll;
 }
@@ -36,4 +36,48 @@
 .dashboard .credits a {
   text-decoration: none;
   color: #67abf3;
+}
+
+.dashboard .info-grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 15%;
+  background-color: #fff;
+  /* color: #444; */
+}
+
+.dashboard .info-grid .cell {
+  /* background: #eee; */
+  text-align: center;
+}
+
+.dashboard .info-grid .cell .cell-inner {
+  width: fit-content;
+  margin: 20px;
+}
+
+.dashboard .info-grid .cell .cell-title {
+  font-size: 40px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.dashboard .info-grid .cell .cell-subtitle {
+  font-size: 15px;
+  color: #888;
+}
+
+.dashboard .info-grid .cell .cell-score {
+  font-size: 40px;
+  font-weight: 200;
+}
+
+.dashboard .info-grid .cell  .cell-section {
+  margin-bottom: 35px;
+}
+
+.dashboard .evolution-arrow {
+  height: 20px;
+  margin-left: 5px;
+  cursor: pointer;
 }

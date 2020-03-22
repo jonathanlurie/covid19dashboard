@@ -147,12 +147,92 @@ class Dashboard extends React.Component {
       }
     }
 
+    let casesIntheLast3Days = country.getCasesStartingNDaysAgoDuringMDays(2, 3)
+    let casesInthe3DaysBefore = country.getCasesStartingNDaysAgoDuringMDays(5, 3)
+    let casesEvolution = casesIntheLast3Days > casesInthe3DaysBefore ?
+      <img className="evolution-arrow" src="images/arrow-red-up.png" title="Higher than the 3 previous days"/> :
+      <img className="evolution-arrow" src="images/arrow-green-down.png" title="Lower than the previous 3 days"/>
+
+    let deathsIntheLast3Days = country.getDeathsStartingNDaysAgoDuringMDays(2, 3)
+    let deathsInthe3DaysBefore = country.getDeathsStartingNDaysAgoDuringMDays(5, 3)
+    let deathsEvolution = deathsIntheLast3Days > deathsInthe3DaysBefore ?
+      <img className="evolution-arrow" src="images/arrow-red-up.png" title="Higher than the 3 previous days"/> :
+      <img className="evolution-arrow" src="images/arrow-green-down.png" title="Lower than the previous 3 days"/>
+
+
     return (
       <div className="dashboard">
 
         <div className="country-name">
           <img className="flag" src={`images/flags/${countryCode}.svg`}/>
           <h1>{country.name}</h1>
+        </div>
+
+
+
+
+
+
+
+        <div className="info-grid">
+
+          <div className="cell">
+            <div className="cell-inner" style={{float: 'right'}}>
+              <p>
+                <span className="cell-title" style={{color: '#ffc800'}}># cases</span>
+              </p>
+
+              <p className="cell-section">
+                <span className="cell-subtitle">(all time)</span><br/>
+                <span className="cell-score">{country.getCases()}</span>
+              </p>
+
+              <p className="cell-section">
+                <span className="cell-subtitle">(all time per million)</span><br/>
+                <span className="cell-score">{~~(country.getCasesPerMillion() * 100) / 100}</span>
+              </p>
+
+              <p className="cell-section">
+                <span className="cell-subtitle">(in the last day)</span><br/>
+                <span className="cell-score">{country.getCasesStartingNDaysAgoDuringMDays(0, 1)}</span>
+              </p>
+
+              <p className="cell-section">
+                <span className="cell-subtitle">(in the last 3 days)</span><br/>
+                <span className="cell-score">{casesIntheLast3Days}</span>{casesEvolution}
+              </p>
+
+            </div>
+          </div>
+
+          <div className="cell">
+            <div className="cell-inner" style={{float: 'left'}}>
+              <p>
+                <span className="cell-title" style={{color: '#c80000'}}># deaths</span>
+              </p>
+              <p className="cell-section">
+                <span className="cell-subtitle">(all time)</span><br/>
+                <span className="cell-score">{country.getDeaths()}</span>
+              </p>
+
+              <p className="cell-section">
+                <span className="cell-subtitle">(all time per million)</span><br/>
+                <span className="cell-score">{~~(country.getDeathsPerMillion() * 100) / 100}</span>
+              </p>
+
+              <p className="cell-section">
+                <span className="cell-subtitle">(in the last day)</span><br/>
+                <span className="cell-score">{country.getDeathsStartingNDaysAgoDuringMDays(0, 1)}</span>
+              </p>
+
+              <p className="cell-section">
+                <span className="cell-subtitle">(in the last 3 days)</span><br/>
+                <span className="cell-score">{deathsIntheLast3Days}</span>{deathsEvolution}
+              </p>
+            </div>
+          </div>
+
+
         </div>
 
         <div className="plot-title">COVID-19 cases and deaths over time (linear scale)</div>
