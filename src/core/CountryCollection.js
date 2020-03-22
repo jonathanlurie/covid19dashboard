@@ -1,5 +1,3 @@
-import Country from './Country'
-
 class CountryCollection {
 
   constructor(){

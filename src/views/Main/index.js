@@ -11,11 +11,9 @@ class Main extends React.Component {
   constructor(props){
     super(props)
     this.state = {}
-    console.log(countryCollection)
   }
 
   render(){
-    console.log('dfghjk');
     // let { countryCode } = useParams()
     let countryCode = this.props.match.params.countryCode
 

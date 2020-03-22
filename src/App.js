@@ -2,9 +2,7 @@ import React from "react";
 import {
   HashRouter,
   Switch,
-  Route,
-  Link,
-  useParams
+  Route
 } from "react-router-dom";
 
 import Main from './views/Main'

@@ -168,7 +168,12 @@ class Dashboard extends React.Component {
         <Line data={dataCumulatedSeriesPerMillion} options={logScale} height={100}/>
 
         <div className="credits">
-          — Made by <a href="https://twitter.com/jonathanlurie">@jonathanlurie</a> :: <a href="https://github.com/jonathanlurie">fork me on GitHub</a> —
+        <p>
+          Data from the <a href="https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide">European Centre for Disease Prevention and Control</a>
+        </p>
+          <p>
+          — Made by <a href="https://twitter.com/jonathanlurie">@jonathanlurie</a> :: <a href="https://github.com/jonathanlurie/covid19dashboard">fork me on GitHub</a> —
+          </p>
         </div>
       </div>
     )
