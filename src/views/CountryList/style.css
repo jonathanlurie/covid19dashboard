@@ -48,3 +48,13 @@
   color: #4e95e0;
   text-decoration: none;
 }
+
+
+.country-list .title {
+  font-size: 35px;
+  text-align: center;
+  font-weight: 200;
+  color: #ffffff;
+  background: #a70000;
+  padding: 10px 0;
+}

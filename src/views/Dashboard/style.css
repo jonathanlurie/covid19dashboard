@@ -19,9 +19,21 @@
   box-shadow: 0px 1px 25px -7px rgba(0,0,0,0.44);
 }
 
-.dashboard  .plot-title {
+.dashboard .plot-title {
   text-align: center;
   margin: 70px 0 10px 0;
   font-size: 25px;
+  color: #67abf3;
+}
+
+
+.dashboard .credits {
+  text-align: center;
+  margin-top: 50px;
+  color: #888888;
+}
+
+.dashboard .credits a {
+  text-decoration: none;
   color: #67abf3;
 }

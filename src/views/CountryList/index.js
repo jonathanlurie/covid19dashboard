@@ -38,6 +38,10 @@ class CountryList extends React.Component {
 
     return (
       <div className="country-list">
+        <div className="title">
+          COVID-19<br/>
+          dashboard
+        </div>
         <div className="container">
           <input className="searchbar" placeholder="Type a country..." onChange={(e) => {this.setState({countrySearch: e.target.value})}}/>
           <ul>

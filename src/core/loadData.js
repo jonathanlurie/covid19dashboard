@@ -1,8 +1,21 @@
 import Country from './Country'
-import { countryCollection } from './Store'
+import { countryCollection, config } from './Store'
+
+async function fetchLocalCountryCode(){
+  try{
+    let geoRes = await fetch('http://www.geoplugin.net/json.gp')
+    let geo = await geoRes.json()
+    config.defaultCountryCode = geo.geoplugin_countryCode.toLowerCase()
+  }catch(e){
+    console.log(e)
+  }
+}
 
 
 async function loadData(){
+  await fetchLocalCountryCode()
+
+
   // loading country names and abbreviations
   let countryByAbreviationRes = await fetch('./data/country-by-abbreviation.json')
   let countryByAbreviation = await countryByAbreviationRes.json()
@@ -22,8 +35,18 @@ async function loadData(){
   let month = date.getUTCMonth() + 1
   month = month < 10 ? `0${month}` : `${month}`
   let year = `${date.getUTCFullYear()}`
-  let covid19Res = await fetch(`./data/covid19-per-country-${day}-${month}-${year}.json`)
-  let covid19 = await covid19Res.json()
+  let covid19Res = null
+  let covid19 = null
+  try{
+    covid19Res = await fetch(`./data/covid19-per-country-${day}-${month}-${year}.json`)
+    covid19 = await covid19Res.json()
+  }catch(e){
+    console.log('Fallback on the last report available')
+    let configRes = await fetch('./data/config.json')
+    let config = await configRes.json()
+    covid19Res = await fetch(`./data/${config.lastFile}`)
+    covid19 =  await covid19Res.json()
+  }
 
   for(let c=0; c<countryByAbreviation.length; c++){
     let countryName = countryByAbreviation[c].country.toLowerCase()
@@ -40,9 +63,6 @@ async function loadData(){
     countryCollection.addCountry(country)
   }
 
-  console.log(countryCollection.getAllCountries());
-
-  console.log('France', countryCollection.getCountry('fr'))
 }
 
 export default loadData

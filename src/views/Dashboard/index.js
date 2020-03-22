@@ -167,7 +167,9 @@ class Dashboard extends React.Component {
         <div className="plot-title">COVID-19 cumulated cases and deaths over time per milion poplation (logarithmic scale)</div>
         <Line data={dataCumulatedSeriesPerMillion} options={logScale} height={100}/>
 
-
+        <div className="credits">
+          — Made by <a href="https://twitter.com/jonathanlurie">@jonathanlurie</a> :: <a href="https://github.com/jonathanlurie">fork me on GitHub</a> —
+        </div>
       </div>
     )
   }

@@ -1,5 +1,8 @@
 import React from "react"
-import { countryCollection } from '../../core/Store'
+import {
+  Redirect
+} from "react-router-dom"
+import { countryCollection, config } from '../../core/Store'
 import Dashboard from '../Dashboard'
 import CountryList from '../CountryList'
 import './style.css'
@@ -12,14 +15,18 @@ class Main extends React.Component {
   }
 
   render(){
+    console.log('dfghjk');
     // let { countryCode } = useParams()
     let countryCode = this.props.match.params.countryCode
+
+    if(!countryCode){
+      return <Redirect to={config.defaultCountryCode} />
+    }
+
     let hasCountry = countryCollection.hasCountry(countryCode)
 
     if(!hasCountry){
-      return (
-        <div>The country code {countryCode} has no data.</div>
-      )
+      alert('There is no data for this country.')
     }
 
 

@@ -14,6 +14,7 @@ export default function ParamsExample() {
     <HashRouter>
         <Switch>
           <Route path="/:countryCode" component={Main} />
+          <Route path="/" component={Main} />
         </Switch>
     </HashRouter>
   );
