@@ -71,7 +71,15 @@ async function main(){
   }
 
   // fs.writeFileSync('data/covid19-per-country.json', JSON.stringify(countries , null, 2))
-  fs.writeFileSync(`../public/data/covid19-per-country-${day}-${month}-${year}.json`, JSON.stringify(countries , null, 2))
+  let filename = `covid19-per-country-${day}-${month}-${year}.json`
+  fs.writeFileSync(`../public/data/${filename}`, JSON.stringify(countries , null, 2))
+
+  let configFileContent = {
+    lastFile: filename,
+    date: date
+  }
+
+  fs.writeFileSync('../public/data/config.json', JSON.stringify(configFileContent , null, 2))
 
   console.log('✅  JSON report ready!')
 }

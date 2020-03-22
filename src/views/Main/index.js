@@ -1,6 +1,8 @@
 import React from "react"
 import { countryCollection } from '../../core/Store'
 import Dashboard from '../Dashboard'
+import CountryList from '../CountryList'
+import './style.css'
 
 class Main extends React.Component {
   constructor(props){
@@ -22,7 +24,10 @@ class Main extends React.Component {
 
 
     return (
-      <Dashboard countryCode={countryCode}/>
+      <div className="main">
+        <CountryList />
+        <Dashboard countryCode={countryCode}/>
+      </div>
     )
   }
 }

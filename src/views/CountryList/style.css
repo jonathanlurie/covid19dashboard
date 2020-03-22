@@ -1,0 +1,50 @@
+.country-list {
+  background-color: #ececec;
+    position: fixed;
+    left: 0;
+    height: 100vh;
+    overflow-y: scroll;
+    width: 300px;
+    top: 0;
+    bottom: 0;
+}
+
+.country-list .container {
+  padding: 10px;
+}
+
+
+.country-list .flag {
+  width: 30px;
+  margin-right: 7px;
+}
+.country-list .country-name {
+  text-transform: capitalize;
+  position: relative;
+  bottom: 3px;
+}
+
+.country-list li {
+  margin-bottom: 10px;
+}
+
+
+.country-list ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.country-list .searchbar {
+  border: none;
+  font-size: 16px;
+  color: #4e95e0;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 270px;
+}
+
+.country-list a {
+  color: #4e95e0;
+  text-decoration: none;
+}
