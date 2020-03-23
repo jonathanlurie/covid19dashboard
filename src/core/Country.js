@@ -9,6 +9,7 @@ class Country {
     this.population = null
   }
 
+
   setRecordSeries(rs){
     this.recordSeries = rs
     // making actual date objects
@@ -16,6 +17,7 @@ class Country {
       this.recordSeries[i].date = new Date(this.recordSeries[i].date)
     }
   }
+
 
   getCases(){
     let total = 0
@@ -25,6 +27,7 @@ class Country {
     return total
   }
 
+
   getDeaths(){
     let total = 0
     for(let i=0; i<this.recordSeries.length; i++){
@@ -33,12 +36,25 @@ class Country {
     return total
   }
 
+
   getCasesPerMillion(){
     return this.getCases() / (this.population / MILLION)
   }
 
+
   getDeathsPerMillion(){
     return this.getDeaths() / (this.population / MILLION)
+  }
+
+
+  // chec
+  // k if the last date available corresponds to the
+  getDataAge(){
+    let lastRecordDate = this.recordSeries[this.recordSeries.length - 1].date
+    let todayAtNoon = new Date()
+    todayAtNoon.setUTCHours(12, 0, 0, 0)
+    let deltaDays = (todayAtNoon - lastRecordDate) / (24 * 3600 * 1000)
+    return deltaDays
   }
 
 
@@ -54,9 +70,6 @@ class Country {
     nDaysAgo.setUTCHours(0, 0, 1, 0)
     let mDaysAfter = new Date(nDaysAgo.getTime() + m * 1000 * 3600 * 24)
     // mDaysAfter.setUTCHours(23, 59, 59, 0)
-
-    console.log('nDaysAgo', nDaysAgo.toUTCString())
-    console.log('mDaysAfter', mDaysAfter.toUTCString())
 
     let total = 0
     for(let i=this.recordSeries.length - 1; i>=0; i--){
@@ -77,9 +90,6 @@ class Country {
       nDaysAgo.setUTCHours(0, 0, 1, 0)
       let mDaysAfter = new Date(nDaysAgo.getTime() + m * 1000 * 3600 * 24)
       // mDaysAfter.setUTCHours(23, 59, 59, 0)
-
-      console.log('nDaysAgo', nDaysAgo.toUTCString())
-      console.log('mDaysAfter', mDaysAfter.toUTCString())
 
       let total = 0
       for(let i=this.recordSeries.length - 1; i>=0; i--){

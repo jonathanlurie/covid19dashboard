@@ -81,3 +81,22 @@
   margin-left: 5px;
   cursor: pointer;
 }
+
+.dashboard .warning-message {
+  text-align: center;
+  background: #fff5f5;
+  /* border: #b9161640 solid 2px; */
+  padding: 10px 0;
+  font-size: 22px;
+  color: #b91616;
+}
+
+
+.dashboard .info-message {
+  text-align: center;
+  background: #e0ffe2;
+  /* border: #05dc13 solid 1px; */
+  padding: 10px 0;
+  font-size: 22px;
+  color: #008a09;
+}

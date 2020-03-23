@@ -11,7 +11,9 @@ class Dashboard extends React.Component {
   constructor(props){
     super(props)
     this.state = {}
+
   }
+
 
   render(){
     let countryCode = this.props.countryCode
@@ -28,6 +30,40 @@ class Dashboard extends React.Component {
     let deathsSeriesPerMillion = country.getDeathsSeriesPerMillion()
     let cumulatedDeathsSeriesPerMillion = country.getCumulatedDeathsSeriesPerMillion()
 
+    let numberOfRecords = Object.keys(casesSeries).length
+
+    let topMessage = null
+
+    if(numberOfRecords === 0){
+      topMessage = (
+        <div className="warning-message">
+          ⚠️ There is no record for this country
+        </div>
+      )
+    }else{
+      let dataAge = country.getDataAge()
+      console.log('dataAge', dataAge)
+
+      if(dataAge < 0.5){
+        topMessage = (
+          <div className="info-message">
+            ✅ These numbers are fresh from the day
+          </div>
+        )
+      }else if(dataAge >= 0.5 && dataAge <= 1){
+        topMessage = (
+          <div className="warning-message">
+            ⚠️ These numbers are from yesterday, they may not reflect today's reality
+          </div>
+        )
+      }else{
+        topMessage = (
+          <div className="warning-message">
+            ⚠️ These numbers are from {~~dataAge} days ago, they may not reflect todays reality
+          </div>
+        )
+      }
+    }
 
     // example: https://github.com/jerairrest/react-chartjs-2/blob/master/example/src/components/line.js
     let dataRegularSeries = {
@@ -170,7 +206,7 @@ class Dashboard extends React.Component {
 
 
 
-
+        {topMessage}
 
 
 
@@ -244,7 +280,7 @@ class Dashboard extends React.Component {
         <div className="plot-title">COVID-19 cases and deaths over time per million population (linear scale)</div>
         <Line data={dataSeriesPerMillion} options={{}} height={100}/>
 
-        <div className="plot-title">COVID-19 cumulated cases and deaths over time per milion poplation (logarithmic scale)</div>
+        <div className="plot-title">COVID-19 cumulated cases and deaths over time per milion population (logarithmic scale)</div>
         <Line data={dataCumulatedSeriesPerMillion} options={logScale} height={100}/>
 
         <div className="credits">
