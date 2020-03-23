@@ -72,7 +72,7 @@ async function main(){
 
   // fs.writeFileSync('data/covid19-per-country.json', JSON.stringify(countries , null, 2))
   let filename = `covid19-per-country-${day}-${month}-${year}.json`
-  fs.writeFileSync(`../public/data/${filename}`, JSON.stringify(countries , null, 2))
+  fs.writeFileSync(`../public/data/${filename}`, JSON.stringify(countries))
 
   let configFileContent = {
     lastFile: filename,
