@@ -15,7 +15,7 @@
     "react-scripts": "3.4.0"
   },
   "scripts": {
-    "fetch": "cd updateData; node index.js; cd ..",
+    "fetch": "cd updateData; node index.js; cd ..; cp public/data/* docs/data/;",
     "start": "react-scripts start",
     "build": "react-scripts build; rm -rf docs; mv build docs",
     "test": "react-scripts test",
