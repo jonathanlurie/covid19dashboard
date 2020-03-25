@@ -33,7 +33,7 @@ class Dashboard extends React.Component {
     let numberOfRecords = Object.keys(casesSeries).length
 
     let topMessage = null
-
+    let dataAge = 0
     if(numberOfRecords === 0){
       topMessage = (
         <div className="warning-message">
@@ -41,7 +41,7 @@ class Dashboard extends React.Component {
         </div>
       )
     }else{
-      let dataAge = country.getDataAge()
+      dataAge = country.getDataAge()
       console.log('dataAge', dataAge)
 
       if(dataAge < 0.5){
@@ -183,14 +183,19 @@ class Dashboard extends React.Component {
       }
     }
 
-    let casesIntheLast3Days = country.getCasesStartingNDaysAgoDuringMDays(2, 3)
-    let casesInthe3DaysBefore = country.getCasesStartingNDaysAgoDuringMDays(5, 3)
+
+    let nbDayFixer = dataAge < 0.5 ? 0 : Math.ceil(dataAge)
+
+    console.log("nbDayFixer", nbDayFixer)
+
+    let casesIntheLast3Days = country.getCasesStartingNDaysAgoDuringMDays(2+nbDayFixer, 3)
+    let casesInthe3DaysBefore = country.getCasesStartingNDaysAgoDuringMDays(5+nbDayFixer, 3)
     let casesEvolution = casesIntheLast3Days > casesInthe3DaysBefore ?
       <img className="evolution-arrow" src="images/arrow-red-up.png" title="Higher than the 3 previous days"/> :
       <img className="evolution-arrow" src="images/arrow-green-down.png" title="Lower than the previous 3 days"/>
 
-    let deathsIntheLast3Days = country.getDeathsStartingNDaysAgoDuringMDays(2, 3)
-    let deathsInthe3DaysBefore = country.getDeathsStartingNDaysAgoDuringMDays(5, 3)
+    let deathsIntheLast3Days = country.getDeathsStartingNDaysAgoDuringMDays(2+nbDayFixer, 3)
+    let deathsInthe3DaysBefore = country.getDeathsStartingNDaysAgoDuringMDays(5+nbDayFixer, 3)
     let deathsEvolution = deathsIntheLast3Days > deathsInthe3DaysBefore ?
       <img className="evolution-arrow" src="images/arrow-red-up.png" title="Higher than the 3 previous days"/> :
       <img className="evolution-arrow" src="images/arrow-green-down.png" title="Lower than the previous 3 days"/>
@@ -230,7 +235,7 @@ class Dashboard extends React.Component {
 
               <p className="cell-section">
                 <span className="cell-subtitle">(in the last day)</span><br/>
-                <span className="cell-score">{country.getCasesStartingNDaysAgoDuringMDays(0, 1)}</span>
+                <span className="cell-score">{country.getCasesStartingNDaysAgoDuringMDays(nbDayFixer, 1)}</span>
               </p>
 
               <p className="cell-section">
@@ -258,7 +263,7 @@ class Dashboard extends React.Component {
 
               <p className="cell-section">
                 <span className="cell-subtitle">(in the last day)</span><br/>
-                <span className="cell-score">{country.getDeathsStartingNDaysAgoDuringMDays(0, 1)}</span>
+                <span className="cell-score">{country.getDeathsStartingNDaysAgoDuringMDays(nbDayFixer, 1)}</span>
               </p>
 
               <p className="cell-section">
