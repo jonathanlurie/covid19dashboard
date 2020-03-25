@@ -38,14 +38,25 @@ async function loadData(){
   let covid19Res = null
   let covid19 = null
   try{
-    covid19Res = await fetch(`./data/covid19-per-country-${day}-${month}-${year}.json`)
-    covid19 = await covid19Res.json()
+    try{
+      covid19Res = await fetch(`./data/covid19-per-country-${day}-${month}-${year}.json`)
+      covid19 = await covid19Res.json()
+    }catch(e){
+      covid19Res = await fetch(`https://raw.githubusercontent.com/jonathanlurie/covid19dashboard/master/docs/data/covid19-per-country-${day}-${month}-${year}.json`)
+      covid19 = await covid19Res.json()
+    }
+
   }catch(e){
     console.log('Fallback on the last report available')
     let configRes = await fetch('./data/config.json')
     let config = await configRes.json()
-    covid19Res = await fetch(`./data/${config.lastFile}`)
-    covid19 =  await covid19Res.json()
+    try{
+      covid19Res = await fetch(`./data/${config.lastFile}`)
+      covid19 =  await covid19Res.json()
+    }catch(e){
+      covid19Res = await fetch(`https://raw.githubusercontent.com/jonathanlurie/covid19dashboard/master/docs/data/${config.lastFile}`)
+      covid19 =  await covid19Res.json()
+    }
   }
 
   for(let c=0; c<countryByAbreviation.length; c++){
