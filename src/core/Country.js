@@ -7,6 +7,7 @@ class Country {
     this.name = name
     this.recordSeries = []
     this.population = null
+    this.mortalityRate = null
   }
 
 
@@ -36,6 +37,14 @@ class Country {
     return total
   }
 
+
+  getCrudeDeathsPerDay(){
+    if(this.mortalityRate === null){
+      return null
+    }
+
+    return ~~(this.population * this.mortalityRate / 1000 / 365.25)
+  }
 
   getCasesPerMillion(){
     return this.getCases() / (this.population / MILLION)

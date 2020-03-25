@@ -28,6 +28,10 @@ async function loadData(){
     countryPopulationMap[c.country.toLowerCase()] = parseInt(c.population) || null
   })
 
+  // load mortality rates (1/1000)
+  let mortalityRateRes = await fetch('./data/mortality-rate-per-country-2017.json')
+  let mortalityRate = await mortalityRateRes.json()
+
   // load covid-19 cases
   let date = new Date()
   let day = date.getUTCDate()
@@ -69,6 +73,10 @@ async function loadData(){
 
     if(countryAbbr.toUpperCase() in covid19){
       country.setRecordSeries(covid19[countryAbbr.toUpperCase()])
+    }
+
+    if(countryAbbr.toLowerCase() in mortalityRate){
+      country.mortalityRate = mortalityRate[countryAbbr.toLowerCase()]
     }
 
     countryCollection.addCountry(country)

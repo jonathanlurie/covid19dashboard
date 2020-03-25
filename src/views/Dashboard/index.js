@@ -19,6 +19,8 @@ class Dashboard extends React.Component {
     let countryCode = this.props.countryCode
     let country = countryCollection.getCountry(countryCode)
 
+    console.log(country)
+
 
     let casesSeries = country.getCasesSeries()
     let cumulatedCasesSeries = country.getCumulatedCasesSeries()
@@ -185,9 +187,6 @@ class Dashboard extends React.Component {
 
 
     let nbDayFixer = dataAge < 0.5 ? 0 : Math.ceil(dataAge)
-
-    console.log("nbDayFixer", nbDayFixer)
-
     let casesIntheLast3Days = country.getCasesStartingNDaysAgoDuringMDays(2+nbDayFixer, 3)
     let casesInthe3DaysBefore = country.getCasesStartingNDaysAgoDuringMDays(5+nbDayFixer, 3)
     let casesEvolution = casesIntheLast3Days > casesInthe3DaysBefore ?
@@ -199,6 +198,18 @@ class Dashboard extends React.Component {
     let deathsEvolution = deathsIntheLast3Days > deathsInthe3DaysBefore ?
       <img className="evolution-arrow" src="images/arrow-red-up.png" title="Higher than the 3 previous days"/> :
       <img className="evolution-arrow" src="images/arrow-green-down.png" title="Lower than the previous 3 days"/>
+
+
+    let crudeDeathsPerDay = country.getCrudeDeathsPerDay()
+
+    let crudeDeathsComp = null
+    if(crudeDeathsPerDay){
+      crudeDeathsComp = (
+        <div className="crude-deaths-info">
+          ℹ️ For comparison, in 2017, <span style={{textTransform: 'capitalize', fontWeight: 800}}>{country.name}</span> was counting an average of <span style={{fontWeight: 800}}>{crudeDeathsPerDay}</span> deaths per day <a style={{color: "#67abf3", textDecoration: 'none'}} href="https://www.cia.gov/library/publications/the-world-factbook/rankorder/2066rank.html">[source]</a>
+        </div>
+      )
+    }
 
 
     return (
@@ -275,6 +286,8 @@ class Dashboard extends React.Component {
 
 
         </div>
+
+        {crudeDeathsComp}
 
         <div className="plot-title">COVID-19 cases and deaths over time (linear scale)</div>
         <Line data={dataRegularSeries} options={{}} height={100}/>
