@@ -1,7 +1,7 @@
 import React from "react"
 import 'chart.js'
 // import { LineChart } from 'react-chartkick'
-import { Line } from 'react-chartjs-2'
+import { Line, Pie } from 'react-chartjs-2'
 import './style.css'
 
 import { countryCollection } from '../../core/Store'
@@ -211,6 +211,59 @@ class Dashboard extends React.Component {
       )
     }
 
+    let world = countryCollection.getCountry('world')
+    let countryCasesLastDay = country.getCasesStartingNDaysAgoDuringMDays(nbDayFixer, 1)
+    let countryDeathsLastDay = country.getDeathsStartingNDaysAgoDuringMDays(nbDayFixer, 1)
+    let worldCasesLastDay = world.getCasesStartingNDaysAgoDuringMDays(nbDayFixer, 1)
+    let worldDeathsLastDay = world.getDeathsStartingNDaysAgoDuringMDays(nbDayFixer, 1)
+
+
+    let casePieChartData = {
+      labels: [
+        country.name,
+        'World'
+      ],
+      datasets: [{
+        data: [
+          ~~((countryCasesLastDay / worldCasesLastDay)*1000)/1000,
+          1 - (~~((countryCasesLastDay / worldCasesLastDay)*1000)/1000)
+        ],
+        backgroundColor: [
+          '#ffc800',
+          '#f0f0f0'
+        ],
+        hoverBackgroundColor: [
+          '#edba00',
+          '#dbdbdb',
+        ],
+        borderWidth: 0
+
+      }]
+    }
+
+
+    let deathPieChartData = {
+      labels: [
+        country.name,
+        'World'
+      ],
+      datasets: [{
+        data: [
+          ~~((countryDeathsLastDay / worldDeathsLastDay)*1000)/1000,
+          1 - (~~((countryDeathsLastDay / worldDeathsLastDay)*1000)/1000)
+        ],
+        backgroundColor: [
+          '#c80000',
+          '#f0f0f0'
+        ],
+        hoverBackgroundColor: [
+          '#a30202',
+          '#f0f0f0',
+        ],
+        borderWidth: 0
+      }]
+    }
+
 
     return (
       <div className="dashboard">
@@ -246,12 +299,17 @@ class Dashboard extends React.Component {
 
               <p className="cell-section">
                 <span className="cell-subtitle">(in the last day)</span><br/>
-                <span className="cell-score">{country.getCasesStartingNDaysAgoDuringMDays(nbDayFixer, 1)}</span>
+                <span className="cell-score">{countryCasesLastDay}</span>
               </p>
 
               <p className="cell-section">
                 <span className="cell-subtitle">(in the last 3 days)</span><br/>
                 <span className="cell-score">{casesIntheLast3Days}</span>{casesEvolution}
+              </p>
+
+              <p className="cell-section">
+                <span className="cell-subtitle">(world proportion in last day)</span><br/>
+                <Pie data={casePieChartData} />
               </p>
 
             </div>
@@ -274,12 +332,17 @@ class Dashboard extends React.Component {
 
               <p className="cell-section">
                 <span className="cell-subtitle">(in the last day)</span><br/>
-                <span className="cell-score">{country.getDeathsStartingNDaysAgoDuringMDays(nbDayFixer, 1)}</span>
+                <span className="cell-score">{countryDeathsLastDay}</span>
               </p>
 
               <p className="cell-section">
                 <span className="cell-subtitle">(in the last 3 days)</span><br/>
                 <span className="cell-score">{deathsIntheLast3Days}</span>{deathsEvolution}
+              </p>
+
+              <p className="cell-section">
+                <span className="cell-subtitle">(world proportion in last day)</span><br/>
+                <Pie data={deathPieChartData} />
               </p>
             </div>
           </div>
