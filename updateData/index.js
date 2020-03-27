@@ -11,16 +11,8 @@ async function main(){
   month = month < 10 ? `0${month}` : `${month}`
   let year = `${date.getUTCFullYear()}`
 
-  let reportUrl = `https://www.ecdc.europa.eu/sites/default/files/documents/COVID-19-geographic-disbtribution-worldwide-${year}-${month}-${day}.xlsx`
-  // sometimes, the file is saved as xls, sometimes as xlsx
-  let reportUrlFallback = `https://www.ecdc.europa.eu/sites/default/files/documents/COVID-19-geographic-disbtribution-worldwide-${year}-${month}-${day}.xls`
-
-
+  let reportUrl = 'https://opendata.ecdc.europa.eu/covid19/casedistribution/csv'
   let reportRes = await fetch(reportUrl)
-
-  if(reportRes.status > 200){
-    reportRes = await fetch(reportUrlFallback)
-  }
 
   if(reportRes.status > 200){
     console.log('❌  The report URL is not correct, please visit \n https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide')
