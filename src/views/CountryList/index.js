@@ -43,7 +43,7 @@ class CountryList extends React.Component {
           dashboard
         </div>
         <div className="container">
-          <input className="searchbar" placeholder="Type a country..." onChange={(e) => {this.setState({countrySearch: e.target.value})}}/>
+          <input className="searchbar" placeholder="Type a country..." onChange={(e) => {this.setState({countrySearch: e.target.value.toLowerCase()})}}/>
           <ul>
             {countryList}
           </ul>
