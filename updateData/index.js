@@ -28,6 +28,8 @@ async function main(){
   // keys are the code
   let countries = {}
 
+  let worldByDate = {}
+
   // arrange the data per country
   for(let i=1; i<data.length; i++){
     let entry = data[i]
@@ -51,6 +53,29 @@ async function main(){
     }
 
     countries[countryCode].push(objectEntry)
+
+    // adding the world record
+    jsonDate = recordDate.toJSON()
+    if(!(jsonDate in worldByDate)){
+      worldByDate[jsonDate] = {
+        cases: 0,
+        deaths: 0
+      }
+    }
+    worldByDate[jsonDate].cases += objectEntry.cases
+    worldByDate[jsonDate].deaths += objectEntry.deaths
+  }
+
+  // rearange the world as if it were a country
+  let allDates = Object.keys(worldByDate)
+  countries.WORLD = []
+  for(let i=0; i<allDates.length; i++){
+    let objectEntry = {
+      date: allDates[i],
+      cases: worldByDate[allDates[i]].cases,
+      deaths: worldByDate[allDates[i]].deaths
+    }
+    countries.WORLD.push(objectEntry)
   }
 
   // Originally, the data is arranged from the newest to the oldest, we want the

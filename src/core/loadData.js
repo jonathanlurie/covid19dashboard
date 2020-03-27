@@ -13,7 +13,7 @@ async function fetchLocalCountryCode(){
 
 
 async function loadData(){
-  await fetchLocalCountryCode()
+  // await fetchLocalCountryCode()
 
 
   // loading country names and abbreviations
@@ -63,6 +63,8 @@ async function loadData(){
     }
   }
 
+  console.log('covid19', covid19)
+
   for(let c=0; c<countryByAbreviation.length; c++){
     let countryName = countryByAbreviation[c].country.toLowerCase()
     let countryAbbr = countryByAbreviation[c].abbreviation.toLowerCase()
@@ -81,6 +83,8 @@ async function loadData(){
 
     countryCollection.addCountry(country)
   }
+
+  console.log('countryCollection', countryCollection)
 
 }
 

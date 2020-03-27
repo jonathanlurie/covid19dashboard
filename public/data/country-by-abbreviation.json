@@ -1,5 +1,9 @@
 [
     {
+        "country": "WORLD",
+        "abbreviation": "world"
+    },
+    {
         "country": "Afghanistan",
         "abbreviation": "AF"
     },

@@ -1,5 +1,9 @@
 [
     {
+        "country": "World",
+        "population": "7713468000"
+    },
+    {
         "country": "Afghanistan",
         "population": "35530081"
     },
