@@ -25,6 +25,7 @@ async function main(){
 
   let data = workSheetsFromBuffer[0].data
 
+
   // keys are the code
   let countries = {}
 
@@ -37,10 +38,9 @@ async function main(){
 
     // date is UTC at noon
     let recordDate = new Date()
-    recordDate.setUTCFullYear(entry[3])
-    recordDate.setUTCMonth(entry[2]-1)
-    recordDate.setUTCDate(entry[1])
+    recordDate.setUTCFullYear(parseInt(entry[3]), parseInt(entry[2])-1, parseInt(entry[1]))
     recordDate.setUTCHours(12, 0, 0, 0)
+
 
     let objectEntry = {
       date: recordDate,
@@ -78,6 +78,8 @@ async function main(){
     countries.WORLD.push(objectEntry)
   }
 
+  console.log(countries.CH)
+
   // Originally, the data is arranged from the newest to the oldest, we want the
   // opposite.
   let allCountryCodes = Object.keys(countries)
@@ -89,7 +91,7 @@ async function main(){
 
   // fs.writeFileSync('data/covid19-per-country.json', JSON.stringify(countries , null, 2))
   let filename = `covid19-per-country-${day}-${month}-${year}.json`
-  fs.writeFileSync(`../public/data/${filename}`, JSON.stringify(countries))
+  fs.writeFileSync(`../public/data/${filename}`, JSON.stringify(countries , null, 2))
 
   let configFileContent = {
     lastFile: filename,

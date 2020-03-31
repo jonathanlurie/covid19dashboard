@@ -199,6 +199,8 @@ class Dashboard extends React.Component {
       <img className="evolution-arrow" src="images/arrow-red-up.png" title="Higher than the 3 previous days"/> :
       <img className="evolution-arrow" src="images/arrow-green-down.png" title="Lower than the previous 3 days"/>
 
+    console.log('deathsIntheLast3Days', deathsIntheLast3Days)
+    console.log('deathsInthe3DaysBefore', deathsInthe3DaysBefore)
 
     let crudeDeathsPerDay = country.getCrudeDeathsPerDay()
 
