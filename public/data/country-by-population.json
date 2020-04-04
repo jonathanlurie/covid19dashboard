@@ -4,6 +4,34 @@
         "population": "7713468000"
     },
     {
+        "country": "Guernsey",
+        "population": "63026"
+    },
+    {
+        "country": "Jersey",
+        "population": "97857"
+    },
+    {
+        "country": "Montenegro",
+        "population": "631219"
+    },
+    {
+        "country": "Serbia",
+        "population": "8745820"
+    },
+    {
+        "country": "Sri Lanka",
+        "population": "22576592"
+    },
+    {
+        "country": "Timor-Leste",
+        "population": "1312085"
+    },
+    {
+        "country": "Isle of Man",
+        "population": "84923"
+    },
+    {
         "country": "Afghanistan",
         "population": "35530081"
     },
@@ -857,7 +885,7 @@
     },
     {
         "country": "The Democratic Republic of Congo",
-        "population": null
+        "population": "88853113"
     },
     {
         "country": "Togo",
@@ -917,7 +945,7 @@
     },
     {
         "country": "United States Minor Outlying Islands",
-        "population": null
+        "population": "300"
     },
     {
         "country": "Uruguay",
@@ -941,11 +969,11 @@
     },
     {
         "country": "Virgin Islands, British",
-        "population": null
+        "population": "31196"
     },
     {
         "country": "Virgin Islands, U.S.",
-        "population": null
+        "population": "107268"
     },
     {
         "country": "Wales",

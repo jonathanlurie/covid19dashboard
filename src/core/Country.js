@@ -8,6 +8,16 @@ class Country {
     this.recordSeries = []
     this.population = null
     this.mortalityRate = null
+    this.color = '#'+Math.floor(Math.random()*16777215).toString(16)
+
+    this.rawCasesSeries = []
+    this.rawDeathsSeries = []
+    this.rawDateSeries = []
+  }
+
+
+  hasRecord(){
+    return this.recordSeries.length > 0
   }
 
 
@@ -16,6 +26,9 @@ class Country {
     // making actual date objects
     for(let i=0; i<this.recordSeries.length; i++){
       this.recordSeries[i].date = new Date(this.recordSeries[i].date)
+      this.rawCasesSeries.push(this.recordSeries[i].deaths)
+      this.rawDeathsSeries.push(this.recordSeries[i].cases)
+      this.rawDateSeries.push(this.recordSeries[i].date)
     }
   }
 
@@ -256,14 +269,6 @@ class Country {
       }
       return series
     }
-
-
-
-
-  // TODO:
-  // - same but per million
-  // - getDeathsSeries and getCasesSeries CUMULATED
-
 
 }
 

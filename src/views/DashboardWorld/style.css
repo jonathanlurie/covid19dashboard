@@ -1,0 +1,117 @@
+.dashboard-world {
+  position: absolute;
+  padding: 40px 0;
+  width: calc(100% - 320px);
+  margin: 0 10px 0 10px;
+  right: 0;
+  overflow-y: scroll;
+}
+
+
+.dashboard-world .country-name {
+  text-transform: capitalize;
+  text-align: center;
+  color: #7d7d7d;
+}
+
+.dashboard-world .flag{
+  width: 100px;
+  /* box-shadow: 0px 1px 25px -7px rgba(0,0,0,0.44); */
+  filter: drop-shadow( 0px 0px 10px rgba(0, 0, 0, .2));
+}
+
+.dashboard-world .plot-title {
+  text-align: center;
+  margin: 70px 0 10px 0;
+  font-size: 25px;
+  color: #67abf3;
+}
+
+
+.dashboard-world .credits {
+  text-align: center;
+  margin-top: 50px;
+  color: #888888;
+}
+
+.dashboard-world .credits a {
+  text-decoration: none;
+  color: #67abf3;
+}
+
+.dashboard-world .info-grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 15%;
+  background-color: #fff;
+  /* color: #444; */
+}
+
+.dashboard-world .info-grid .cell {
+  /* background: #eee; */
+  text-align: center;
+}
+
+.dashboard-world .info-grid .cell .cell-inner {
+  width: fit-content;
+  margin: 20px;
+}
+
+.dashboard-world .info-grid .cell .cell-title {
+  font-size: 40px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.dashboard-world .info-grid .cell .cell-subtitle {
+  font-size: 15px;
+  color: #888;
+}
+
+.dashboard-world .info-grid .cell .cell-score {
+  font-size: 40px;
+  font-weight: 200;
+}
+
+.dashboard-world .info-grid .cell  .cell-section {
+  margin-bottom: 35px;
+}
+
+.dashboard-world .evolution-arrow {
+  height: 20px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.dashboard-world .warning-message {
+  text-align: center;
+  background: #fff5f5;
+  /* border: #b9161640 solid 2px; */
+  padding: 10px 0;
+  font-size: 22px;
+  color: #b91616;
+}
+
+
+.dashboard-world .info-message {
+  text-align: center;
+  background: #e0ffe2;
+  /* border: #05dc13 solid 1px; */
+  padding: 10px 0;
+  font-size: 22px;
+  color: #008a09;
+}
+
+
+.dashboard-world .crude-deaths-info {
+  color: #a7a7a7;
+  text-align: center;
+}
+
+.dashboard-world .pie-section {
+  min-width: 200px;
+}
+
+.dashboard-world .pie-section canvas {
+  margin-top: 10px;
+}

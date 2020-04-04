@@ -4,6 +4,7 @@ import {
 } from "react-router-dom"
 import { countryCollection, config } from '../../core/Store'
 import Dashboard from '../Dashboard'
+import DashboardWorld from '../DashboardWorld'
 import CountryList from '../CountryList'
 import './style.css'
 
@@ -27,11 +28,13 @@ class Main extends React.Component {
       alert('There is no data for this country.')
     }
 
+    let dashboardComp = countryCode === 'world' ? <DashboardWorld /> : <Dashboard countryCode={countryCode}/>
+
 
     return (
       <div className="main">
         <CountryList />
-        <Dashboard countryCode={countryCode}/>
+        {dashboardComp}
       </div>
     )
   }
