@@ -310,6 +310,8 @@ class DashboardWorld extends React.Component {
               <p className="cell-section">
                 <span className="cell-subtitle">all time</span><br/>
                 <span className="cell-score">{country.getCases()}</span>
+                <br/>
+                <span className="cell-raise">+{country.getCasesLastDayRaise()}% in the last day</span>
               </p>
 
               <p className="cell-section">
@@ -363,6 +365,8 @@ class DashboardWorld extends React.Component {
               <p className="cell-section">
                 <span className="cell-subtitle">all time</span><br/>
                 <span className="cell-score">{country.getDeaths()}</span>
+                <br/>
+                <span className="cell-raise">+{country.getDeathsLastDayRaise()}% in the last day</span>
               </p>
 
               <p className="cell-section">

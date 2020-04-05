@@ -57,4 +57,10 @@
   color: #ffffff;
   background: #a70000;
   padding: 10px 0;
+
+}
+
+.country-list .title a{
+  text-decoration: none;
+  color: #ffffff;
 }

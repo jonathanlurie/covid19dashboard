@@ -108,6 +108,10 @@
   text-align: center;
 }
 
+.dashboard-world .info-grid .cell .cell-raise {
+  color: #f77272;
+}
+
 .dashboard-world .pie-section {
   min-width: 200px;
 }

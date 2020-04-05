@@ -73,6 +73,10 @@
   font-weight: 200;
 }
 
+.dashboard .info-grid .cell .cell-raise {
+  color: #f77272;
+}
+
 .dashboard .info-grid .cell  .cell-section {
   margin-bottom: 35px;
 }

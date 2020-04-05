@@ -51,6 +51,22 @@ class Country {
   }
 
 
+  getCasesLastDayRaise(){
+    let total = 0
+    for(let i=0; i<this.recordSeries.length-1; i++){
+      total += this.recordSeries[i].cases
+    }
+    return ~~((this.recordSeries[this.recordSeries.length-1].cases / total) * 1000) / 10
+  }
+
+  getDeathsLastDayRaise(){
+    let total = 0
+    for(let i=0; i<this.recordSeries.length-1; i++){
+      total += this.recordSeries[i].deaths
+    }
+    return ~~((this.recordSeries[this.recordSeries.length-1].deaths / total) * 1000) / 10
+  }
+
   getCrudeDeathsPerDay(){
     if(this.mortalityRate === null){
       return null

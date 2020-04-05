@@ -290,27 +290,29 @@ class Dashboard extends React.Component {
               </p>
 
               <p className="cell-section">
-                <span className="cell-subtitle">(all time)</span><br/>
+                <span className="cell-subtitle">all time</span><br/>
                 <span className="cell-score">{country.getCases()}</span>
+                <br/>
+                <span className="cell-raise">+{country.getCasesLastDayRaise()}% in the last day</span>
               </p>
 
               <p className="cell-section">
-                <span className="cell-subtitle">(all time per million)</span><br/>
+                <span className="cell-subtitle">all time per million</span><br/>
                 <span className="cell-score">{~~(country.getCasesPerMillion() * 100) / 100}</span>
               </p>
 
               <p className="cell-section">
-                <span className="cell-subtitle">(in the last day)</span><br/>
+                <span className="cell-subtitle">in the last day</span><br/>
                 <span className="cell-score">{countryCasesLastDay}</span>
               </p>
 
               <p className="cell-section">
-                <span className="cell-subtitle">(in the last 3 days)</span><br/>
+                <span className="cell-subtitle">in the last 3 days</span><br/>
                 <span className="cell-score">{casesIntheLast3Days}</span>{casesEvolution}
               </p>
 
               <p className="cell-section">
-                <span className="cell-subtitle">(world proportion in last day)</span><br/>
+                <span className="cell-subtitle">world proportion in last day</span><br/>
                 <Pie data={casePieChartData} />
               </p>
 
@@ -323,27 +325,29 @@ class Dashboard extends React.Component {
                 <span className="cell-title" style={{color: '#c80000'}}># deaths</span>
               </p>
               <p className="cell-section">
-                <span className="cell-subtitle">(all time)</span><br/>
+                <span className="cell-subtitle">all time</span><br/>
                 <span className="cell-score">{country.getDeaths()}</span>
+                <br/>
+                <span className="cell-raise">+{country.getDeathsLastDayRaise()}% in the last day</span>
               </p>
 
               <p className="cell-section">
-                <span className="cell-subtitle">(all time per million)</span><br/>
+                <span className="cell-subtitle">all time per million</span><br/>
                 <span className="cell-score">{~~(country.getDeathsPerMillion() * 100) / 100}</span>
               </p>
 
               <p className="cell-section">
-                <span className="cell-subtitle">(in the last day)</span><br/>
+                <span className="cell-subtitle">in the last day</span><br/>
                 <span className="cell-score">{countryDeathsLastDay}</span>
               </p>
 
               <p className="cell-section">
-                <span className="cell-subtitle">(in the last 3 days)</span><br/>
+                <span className="cell-subtitle">in the last 3 days</span><br/>
                 <span className="cell-score">{deathsIntheLast3Days}</span>{deathsEvolution}
               </p>
 
               <p className="cell-section">
-                <span className="cell-subtitle">(world proportion in last day)</span><br/>
+                <span className="cell-subtitle">world proportion in last day</span><br/>
                 <Pie data={deathPieChartData} />
               </p>
             </div>
