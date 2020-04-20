@@ -1,8 +1,15 @@
 const fetch = require('node-fetch')
 const xlsx = require('node-xlsx')
 const fs = require('fs')
+const countryCodes = require('./countryCodes.json')
+
 
 async function main(){
+  // to convert from three letter country code to two letter country codes
+  // (this is because the datasource change the format half way)
+  let twoLetterCode2threeLetterCode = {}
+  countryCodes.forEach(c => twoLetterCode2threeLetterCode[c.alpha3code] = c.alpha2code)
+
   // https://www.ecdc.europa.eu/sites/default/files/documents/COVID-19-geographic-disbtribution-worldwide-2020-03-18.xls
   let date = new Date()
   let day = date.getUTCDate()
@@ -34,7 +41,7 @@ async function main(){
   // arrange the data per country
   for(let i=1; i<data.length; i++){
     let entry = data[i]
-    let countryCode = entry[7]
+    let countryCode = twoLetterCode2threeLetterCode[entry[8]]
 
     // date is UTC at noon
     let recordDate = new Date()
