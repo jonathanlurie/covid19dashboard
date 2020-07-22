@@ -51,8 +51,8 @@ async function main(){
 
     let objectEntry = {
       date: recordDate,
-      cases: entry[4],
-      deaths: entry[5]
+      cases: entry[4] < 0 ? 0 : entry[4],
+      deaths: entry[5] < 0 ? 0 : entry[5]
     }
 
     if(!(countryCode in countries)){
